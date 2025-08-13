@@ -1,4 +1,6 @@
 # controller/sales_controller.py
+from PIL._tkinter_finder import tk
+
 from model.backend import SalesModel
 
 class SalesController:
@@ -14,11 +16,4 @@ class SalesController:
         return self.model.get_summary()
 
     def run_forecast(self):
-        """
-        Run ML forecast on the sales data.
-        Placeholder for now — later will use ARIMA/Prophet/etc.
-        """
-        # For now, just return the cleaned data
-        if self.model.df is None:
-            self.model.load_data()
-        return self.model.df
+        return self.model.arima_forecast()
